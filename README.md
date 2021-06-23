@@ -5,6 +5,6 @@ add a .env file\
 create database\
 npm install\
 node seed\
-npm start\
+npm start
 
 phaser runs on the client side

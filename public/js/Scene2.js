@@ -165,6 +165,7 @@ class Scene2 extends Phaser.Scene{
 
         if (stars.countActive(true) === 0)
         {
+            console.log('all stars collected');
             //console.log(platforms);
             //platform1.x = 200;
             //  A new batch of stars to collect

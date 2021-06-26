@@ -12,6 +12,16 @@ class Scene2 extends Phaser.Scene{
         this.load.image('star', './assets/star.png');
         this.load.image('bomb', './assets/bomb.png');
         this.load.spritesheet('OurSprite', './assets/OurSprite.png', { frameWidth: 100, frameHeight: 138 });
+
+    // Creating 5 different background images
+        bg1 = this.load.image('sky', './assets/sky.png');
+        bg2 = this.load.image('sky2', './assets/sky2.png');
+        bg3 = this.load.image('sky3', './assets/sky3.png');
+        bg4 = this.load.image('sky4', './assets/sky4.png');
+        bg5 = this.load.image('sky5', './assets/sky5.png');
+
+    //   Added images to array
+        const backgrounds = [bg1, bg2, bg3, bg4, bg5];
     }
 
     create ()
@@ -206,6 +216,8 @@ class Scene2 extends Phaser.Scene{
             for(let i=0;i<coords.length;i++){
                 platforms.create(coords[i][0], coords[i][1], 'ground');
             }
+            // Function to randomly select background from array created in scene1
+            const randomBG = Math.floor(Math.random() * backgrounds.length);
         }
     }
 

@@ -12,15 +12,6 @@ class Scene1 extends Phaser.Scene {
           frameHeight:16
       });
       */
-     bg1 = this.load.image('sky', './assets/sky.png');
-     bg2 = this.load.image('sky2', './assets/sky2.png');
-     bg3 = this.load.image('sky3', './assets/sky3.png');
-     bg4 = this.load.image('sky4', './assets/sky4.png');
-     bg5 = this.load.image('sky5', './assets/sky5.png');
-
-     const backgrounds = [bg1, bg2, bg3, bg4, bg5];
-
-     const randomBG = Math.floor(Math.random() * backgrounds.length);
     }
   create() {
     //let clickCount = 0;

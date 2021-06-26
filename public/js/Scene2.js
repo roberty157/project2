@@ -11,7 +11,7 @@ class Scene2 extends Phaser.Scene{
         this.load.image('ground', './assets/platform.png');
         this.load.image('star', './assets/star.png');
         this.load.image('bomb', './assets/bomb.png');
-        this.load.spritesheet('dude', './assets/dude.png', { frameWidth: 32, frameHeight: 48 });
+        this.load.spritesheet('OurSprite', './assets/OurSprite.png', { frameWidth: 100, frameHeight: 138 });
     }
 
     create ()
@@ -53,20 +53,20 @@ class Scene2 extends Phaser.Scene{
         //  Our player animations, turning, walking left and walking right.
         this.anims.create({
             key: 'left',
-            frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
+            frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 2 }),
             frameRate: 10,
             repeat: -1
         });
-
+/*
         this.anims.create({
             key: 'turn',
             frames: [ { key: 'dude', frame: 4 } ],
             frameRate: 20
         });
-
+*/
         this.anims.create({
             key: 'right',
-            frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
+            frames: this.anims.generateFrameNumbers('dude', { start: 3, end: 5 }),
             frameRate: 10,
             repeat: -1
         });

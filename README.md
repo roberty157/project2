@@ -1,6 +1,7 @@
 # project2
 project 2 uci coding bootcamp
 
+add database to mysql workbench
 add a .env file\
 create database\
 npm install\

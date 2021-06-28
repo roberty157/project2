@@ -8,27 +8,41 @@ class Scene2 extends Phaser.Scene{
     preload ()
     {
         this.load.image('sky', './assets/sky.png');
-        this.load.image('ground', './assets/platform.png');
+        this.load.image('ground', './assets/platformDarkGray.png');
         this.load.image('star', './assets/star.png');
         this.load.image('bomb', './assets/bomb.png');
         this.load.spritesheet('OurSprite', './assets/OurSprite.png', { frameWidth: 100, frameHeight: 138 });
 
     // Creating 5 different background images
-        bg1 = this.load.image('sky', './assets/sky.png');
-        bg2 = this.load.image('sky2', './assets/sky2.png');
-        bg3 = this.load.image('sky3', './assets/sky3.png');
-        bg4 = this.load.image('sky4', './assets/sky4.png');
-        bg5 = this.load.image('sky5', './assets/sky5.png');
+        this.load.image('sky', './assets/sky.png');
+        this.load.image('sky2', './assets/sky2.jpg');
+        this.load.image('sky3', './assets/sky3.jpg');
+        this.load.image('sky4', './assets/sky4.jpg');
+        this.load.image('sky5', './assets/sky5.jpg');
 
-    //   Added images to array
-        const backgrounds = [bg1, bg2, bg3, bg4, bg5];
     }
 
     create ()
     {
         //  A simple background for our game
+        /*
         this.add.image(400, 300, 'sky');
+        if(level ==1){
+            this.add.image(400,300,'sky');
+        }else{
+            let bgLst = ['sky2','sky3','sky4','sky5'];
+            const randomBGIndex = Math.floor(Math.random() * bgLst.length);
+            this.add.image(400,300,bgLst[randomBGIndex]);
+        }
+        */
 
+        let bgLst = ['sky2','sky3','sky4','sky5'];
+            const randomBGIndex = Math.floor(Math.random() * bgLst.length);
+            this.add.image(400,300,bgLst[randomBGIndex]);
+        //this.add.image(400,300,'sky2');
+        //currentBG.texture = 
+        //console.log(Object.entries(currentBG));
+        //currentBG.texture = backgrounds[1];
         //  The platforms group contains the ground and the 2 ledges we can jump on
         platforms = this.physics.add.staticGroup();
 
@@ -38,10 +52,27 @@ class Scene2 extends Phaser.Scene{
 
         //  Now let's create some ledges
         //[600,400], [50,250], [750,220]
+        /*
         platforms.create(600, 400, 'ground');
         platforms.create(600, 200, 'ground');
 
         platforms.create(50, 250, 'ground');
+        */
+        if(level == 1){
+            platforms.create(600, 400, 'ground');
+            platforms.create(600, 200, 'ground');
+
+            platforms.create(50, 250, 'ground');
+        }
+        else{
+            let coords = chooseLevel();
+            for(let i=0;i<coords.length;i++){
+                platforms.create(coords[i][0], coords[i][1], 'ground');
+            }
+        }
+        
+
+
         //platforms.create(70, 100, 'ground');
         //platforms.create(50, 400, 'ground');
         //platforms.create(750, 220, 'ground');
@@ -111,8 +142,8 @@ class Scene2 extends Phaser.Scene{
         bombs = this.physics.add.group();
 
         //  The score
-        scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
-        levelText = this.add.text(590,16, 'Level: 1', { fontSize: '32px', fill: '#000' });
+        scoreText = this.add.text(16, 16, `score: ${score}`, { fontSize: '32px', fill: '#FFFFFF' });
+        levelText = this.add.text(590,16, `Level: ${level}`, { fontSize: '32px', fill: '#FFFFFF' });
         // the level
         //levelText = this.add.text(16,16,'Level:', {fontSize: '32px',fill:'#000'});
 
@@ -125,6 +156,23 @@ class Scene2 extends Phaser.Scene{
         this.physics.add.overlap(player, stars, this.collectStar, null, this);
 
         this.physics.add.collider(player, bombs, this.hitBomb, null, this);
+        console.log(this.scene);
+
+
+        //create bombs level number minus 1
+        for(let i=1;i<level;i++){
+            let x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+
+            let bomb = bombs.create(x, 16, 'bomb');
+            bomb.setGravityY(100);
+            bomb.setBounce(1);
+            bomb.setCollideWorldBounds(true);
+            bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
+            bomb.allowGravity = false;
+        }
+        
+
+
     }
 
     update ()
@@ -189,12 +237,14 @@ class Scene2 extends Phaser.Scene{
             //console.log(platforms);
             //platform1.x = 200;
             //  A new batch of stars to collect
+            /*
             stars.children.iterate(function (child) {
 
                 child.enableBody(true, child.x, 0, true, true);
 
             });
-
+            */
+            /*
             var x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
 
             var bomb = bombs.create(x, 16, 'bomb');
@@ -203,7 +253,7 @@ class Scene2 extends Phaser.Scene{
             bomb.setCollideWorldBounds(true);
             bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
             bomb.allowGravity = false;
-
+            */
             //this.scene.start("playGame");
             //remove all platforms
             level++;
@@ -212,12 +262,25 @@ class Scene2 extends Phaser.Scene{
                 console.log(i);
                 platforms.remove(platforms.children.entries[1],true);
             }
+            /*
             let coords = chooseLevel();
             for(let i=0;i<coords.length;i++){
                 platforms.create(coords[i][0], coords[i][1], 'ground');
             }
+            */
             // Function to randomly select background from array created in scene1
-            const randomBG = Math.floor(Math.random() * backgrounds.length);
+            //const randomBGIndex = Math.floor(Math.random() * backgrounds.length);
+            //currentBG.texture = backgrounds[1]; 
+            //currentBG.destroy();
+            //this.add.image(400,300,backgrounds[1]);
+            //this.load.image('sky2');
+            //new Image(this,400,300,'sky2');
+            //console.log(currentBG);   
+            //this.add.image(400, 300, 'sky2');
+            //currentBG.destroy();
+            //currentBG.
+            //this.add.image(400, 300, 'sky2');
+            this.scene.start("playGame");
         }
     }
 
@@ -237,6 +300,7 @@ class Scene2 extends Phaser.Scene{
 
 }
 
+//export default playGame;
 
 
 

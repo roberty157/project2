@@ -5,14 +5,50 @@
       "password": "password12345"
     },
     {
-      "name": "Lernantino",
-      "email": "lernantino@gmail.com",
-      "password": "password12345"
-    },
-    {
       "name": "Amiko",
       "email": "amiko2k20@aol.com",
       "password": "password12345"
+    },
+    {
+      "name": "Albert",
+      "email": "albert@aol.com",
+      "password": "password12345"
+    },
+    {
+      "name": "Bill",
+      "email": "bill@hotmail.com",
+      "password": "password12345"
+    },
+    {
+      "name": "Dave",
+      "email": "dave@hotmail.com",
+      "password": "password12345"
+    },
+    {
+      "name": "Don",
+      "email": "don@aol.com",
+      "password": "password12345"
+    },
+    {
+      "name": "Johnny",
+      "email": "johnny@hotmail.com",
+      "password": "password12345"
+    },
+    {
+      "name": "Richard",
+      "email": "richard@hotmail.com",
+      "password": "password12345"
+    },
+    {
+      "name": "Rachel",
+      "email": "rachel@hotmail.com",
+      "password": "password12345"
+    },
+    {
+      "name": "robert",
+      "email": "robert@hotmail.com",
+      "password": "password12345"
     }
+
   ]
   

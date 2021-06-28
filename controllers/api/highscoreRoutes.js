@@ -1,9 +1,13 @@
 const router = require('express').Router();
 const { Highscore,User } = require('../../models');
+/*
+router.get('/id/:id', async (req,res)=>{
 
+})
+*/
 router.post('/', async(req,res) =>{
     try {
-        const currentScore = await Highscore.findOne();
+        const currentScore = await Highscore.findOne({where:{user_id:req.session.user_id}});
     if(currentScore === null){
         //no current score
         try{
@@ -35,12 +39,14 @@ router.post('/', async(req,res) =>{
               )
                 .then((updatedScore) => {
                   // Sends the updated book as a json response
-                  res.json(updatedScore);
+                  res.status(200).json(updatedScore);
                 })
                 .catch((err) => res.json(err));
         }
+        else{
+            res.status(200).json(currentScore);
+        }
         
-        res.status(200).json(currentScore);
     }
 }
 catch(err){
@@ -49,8 +55,9 @@ catch(err){
 
 });
 
-
+/*
 router.get('/:id', async(req,res) =>{
+    console.log('top ten scores');
     //get high score by user id
     try{
         const scoreData = await Highscore.findOne({
@@ -62,11 +69,17 @@ router.get('/:id', async(req,res) =>{
         res.status(500).json(err);
     }
 });
+*/
 
 
+router.get('/topten', async(req,res) =>{
+    try{
+        const toptenData = await Highscore.findAll({order:[['score','DESC']],limit:10,include: [{model:User,attributes:['name']}]});
+        res.status(200).json(toptenData);
+    }catch(err){
+        res.status(500).json(err);
+    }
+});
 
 
-//router.get('/topten')
-
-router.post('/')
 module.exports = router;

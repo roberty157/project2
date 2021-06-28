@@ -1,0 +1,13 @@
+<h1>Leaderboard</h1>
+<ol>
+{{#each topten as |highscore| }}
+<div class="row mb-4 project">
+  <div class="col-md-5">
+    <h5>{{highscore.user.name}}</h5>
+  </div>
+  <div class="col-md-7">
+    <h5>{{highscore.score}}</h5>
+  </div>
+</div>
+{{/each}}
+</ol>

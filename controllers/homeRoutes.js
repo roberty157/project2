@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {  User } = require('../models');
+const {  User,Highscore } = require('../models');
 const withAuth = require('../utils/auth');
 
 
@@ -34,5 +34,18 @@ router.get('/game', withAuth, (req,res) =>{
       });
 });
 
+router.get('/leaderboard',async(req,res)=>{
+  try{
+    const toptenData = await Highscore.findAll({order:[['score','DESC']],limit:10,include: [{model:User,attributes:['name']}]});
+    const topten = toptenData.map((score)=>score.get({plain:true}));
+
+    res.render('leaderboard',{
+      topten,
+      logged_in: req.session.logged_in
+    });
+  }catch(err){
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;

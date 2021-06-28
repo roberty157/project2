@@ -4,7 +4,7 @@ class Scene1 extends Phaser.Scene {
     }
 
     preload(){
-        this.load.image('sky', './assets/sky.png');
+        this.load.image('sky2', './assets/sky2.jpg');
         this.load.image('playButton', './assets/play.png');
         /*
         this.load.spritesheet('beam','../assets/beam.png',{
@@ -16,7 +16,7 @@ class Scene1 extends Phaser.Scene {
   create() {
     //let clickCount = 0;
     //this.clickCountText = this.add.text(100, 200, '');
-    this.add.image(400, 300, 'sky');
+    this.add.image(400, 300, 'sky2');
 
     const playButton = this.add.image(400,300,'playButton')
         .setScale(2)
@@ -37,3 +37,5 @@ class Scene1 extends Phaser.Scene {
       */
   }
 }
+
+//export default bootGame;

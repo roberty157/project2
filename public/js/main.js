@@ -4,6 +4,9 @@
     //keep track of score
 
     //maybe an enemy
+//import Scene1 from './Scene1.js';
+//import Scene2 from './Scene2.js';
+//import Scene3 from './Scene3.js';
 
     let player;
     let stars;
@@ -14,9 +17,13 @@
     let gameOver = false;
     let scoreText;
 
+
     let levelText;
     let level = 1;
 
+    let backgrounds;
+    let currentBG;
+    
     var config = {
         type: Phaser.AUTO,
         width: 800,
@@ -43,14 +50,14 @@
         //level3 = [600,400],[50,250],[750,220],[100,400]
         //
         let levelList = [
-            [[600,400],[50,250],[750,220],[400,300],[750,520]],
+            [[600,400],[50,250],[750,220],[750,520]],
             [[600,400],[50,250],[750,220],[100,400]],
-            [[-100],[400,320],[720,520]],
+            [[-100,105],[400,320],[720,520]],
             [[400,320],[720,520]],
-            [[600,400],[50,230],[750,220],[100,400],[-100,105],[400,320],[720,520]],
+            [[600,400],[50,230],[750,220],[100,400],[-100,105],[720,520]],
             [[600,400],[50,250]],
             [[600,400],[600,200]],
-            [[50,250],[70,100],[50,400]]
+            [[50,250],[60,100],[50,400]]
         ]
         const random = Math.floor(Math.random() * levelList.length);
         /*

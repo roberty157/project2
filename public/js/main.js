@@ -4,9 +4,7 @@
     //keep track of score
 
     //maybe an enemy
-//import Scene1 from './Scene1.js';
-//import Scene2 from './Scene2.js';
-//import Scene3 from './Scene3.js';
+
 
     let player;
     let stars;
@@ -42,13 +40,6 @@
 
    
     function chooseLevel(){
-        //n is number of coords you want
-        //let res = []
-        //let coordList = [[600,400],[50,250],[750,220],[100,400],[-100,100],[400,300],[700,700]];
-        //level1 = [600,400],[50,250],[750,220]
-        //level2 = [600,400],[50,250],[750,220],[400,300],[750,520]
-        //level3 = [600,400],[50,250],[750,220],[100,400]
-        //
         let levelList = [
             [[600,400],[50,250],[750,220],[750,520]],
             [[600,400],[50,250],[750,220],[100,400]],
@@ -60,14 +51,6 @@
             [[50,250],[60,100],[50,400]]
         ]
         const random = Math.floor(Math.random() * levelList.length);
-        /*
-        for(let i =0; i < n; i++){
-            const random = Math.floor(Math.random() * levelList.length);
-            res.push(levelList[random]);
-            levelList.splice(random,1);
-        }
-        */
         console.log(levelList[random]);
         return levelList[random];
-        //console.log(res);
     }

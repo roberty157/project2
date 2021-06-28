@@ -25,24 +25,12 @@ class Scene2 extends Phaser.Scene{
     create ()
     {
         //  A simple background for our game
-        /*
-        this.add.image(400, 300, 'sky');
-        if(level ==1){
-            this.add.image(400,300,'sky');
-        }else{
-            let bgLst = ['sky2','sky3','sky4','sky5'];
-            const randomBGIndex = Math.floor(Math.random() * bgLst.length);
-            this.add.image(400,300,bgLst[randomBGIndex]);
-        }
-        */
+        
 
         let bgLst = ['sky2','sky3','sky4','sky5'];
             const randomBGIndex = Math.floor(Math.random() * bgLst.length);
             this.add.image(400,300,bgLst[randomBGIndex]);
-        //this.add.image(400,300,'sky2');
-        //currentBG.texture = 
-        //console.log(Object.entries(currentBG));
-        //currentBG.texture = backgrounds[1];
+        
         //  The platforms group contains the ground and the 2 ledges we can jump on
         platforms = this.physics.add.staticGroup();
 
@@ -50,14 +38,7 @@ class Scene2 extends Phaser.Scene{
         //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
         platforms.create(400, 568, 'ground').setScale(2).refreshBody();
 
-        //  Now let's create some ledges
-        //[600,400], [50,250], [750,220]
-        /*
-        platforms.create(600, 400, 'ground');
-        platforms.create(600, 200, 'ground');
-
-        platforms.create(50, 250, 'ground');
-        */
+        //making ledges
         if(level == 1){
             platforms.create(600, 400, 'ground');
             platforms.create(600, 200, 'ground');
@@ -72,16 +53,6 @@ class Scene2 extends Phaser.Scene{
         }
         
 
-
-        //platforms.create(70, 100, 'ground');
-        //platforms.create(50, 400, 'ground');
-        //platforms.create(750, 220, 'ground');
-        //platforms.create(100, 400, 'ground');
-        //platforms.create(-100, 105, 'ground');
-        //platforms.create(400,320, 'ground');
-        //platforms.create(720, 520, 'ground');
-        //console.log(platform1.x = 700);
-        //console.log(Object.entries(platforms));
         // The player and its settings
         player = this.physics.add.sprite(100, 450, 'OurSprite');
 
@@ -217,14 +188,10 @@ class Scene2 extends Phaser.Scene{
             console.log(i);
             platforms.remove(platforms.children.entries[1],true);
         }
+        platforms.create(100, 400, 'ground');
+        console.log(platforms.children.entries[1]);
+        platforms.children.entries[1].destroy();
         */
-
-        
-        //console.log(platforms);
-        //platforms.remove(platforms.children.entries[1],true);
-        //platforms.create(100, 400, 'ground');
-        //console.log(platforms.children.entries[1]);
-        //platforms.children.entries[1].destroy();
         star.disableBody(true, true);
 
         //  Add and update the score
@@ -300,7 +267,7 @@ class Scene2 extends Phaser.Scene{
 
 }
 
-//export default playGame;
+
 
 
 

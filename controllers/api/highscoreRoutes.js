@@ -1,10 +1,6 @@
 const router = require('express').Router();
 const { Highscore,User } = require('../../models');
-/*
-router.get('/id/:id', async (req,res)=>{
 
-})
-*/
 router.post('/', async(req,res) =>{
     try {
         const currentScore = await Highscore.findOne({where:{user_id:req.session.user_id}});
@@ -55,21 +51,7 @@ catch(err){
 
 });
 
-/*
-router.get('/:id', async(req,res) =>{
-    console.log('top ten scores');
-    //get high score by user id
-    try{
-        const scoreData = await Highscore.findOne({
-            where: {user_id: req.params.id}
-        });
-        res.status(200).json(scoreData);
 
-    }catch(err){
-        res.status(500).json(err);
-    }
-});
-*/
 
 
 router.get('/topten', async(req,res) =>{

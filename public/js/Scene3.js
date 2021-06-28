@@ -8,13 +8,7 @@ class Scene3 extends Phaser.Scene {
     preload(){
         this.load.image('sky2', './assets/sky2.jpg');
         this.load.image('exit', './assets/exit.png');
-        //this.load.image('playButton', 'assets/play.png');
-        /*
-        this.load.spritesheet('beam','../assets/beam.png',{
-          frameWidth:16,
-          frameHeight:16
-      });
-      */
+        
     }
   create() {
     //let clickCount = 0;

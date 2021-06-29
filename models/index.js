@@ -10,11 +10,11 @@ User.hasOne(Highscore, {
 Highscore.belongsTo(User, {
     foreignKey: 'user_id',
 });
-User.hasMany(Comment,{
+User.hasMany(Comment, {
     foreignKey:'user_id',
     onDelete:'CASCADE'
-})
-Commment.belongsTo(User,{
+});
+Comment.belongsTo(User, {
     foreignKey:'user_id',
 
 });
@@ -22,7 +22,7 @@ Commment.belongsTo(User,{
 User.hasMany(Rating,{
     foreignKey:'user_id',
     onDelete:'CASCADE'
-})
+});
 Rating.belongsTo(User,{
     foreignKey:'user_id',
 

@@ -103,7 +103,7 @@ class Scene2 extends Phaser.Scene{
         stars = this.physics.add.group({
             key: 'star',
             repeat: 11,
-            setXY: { x: 12, y: 0, stepX: getRandomInt(50,70) }
+            setXY: { x: 12, y: 0, stepX: Phaser.Math.Between(50,70) }
         });
 
         stars.children.iterate(function (child) {

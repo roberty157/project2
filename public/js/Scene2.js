@@ -26,7 +26,7 @@ class Scene2 extends Phaser.Scene{
     {
         //  A simple background for our game
         
-
+        // Adding array to randomize the backgrounds per level for the game.
         let bgLst = ['sky2','sky3','sky4','sky5'];
             const randomBGIndex = Math.floor(Math.random() * bgLst.length);
             this.add.image(400,300,bgLst[randomBGIndex]);
@@ -38,13 +38,14 @@ class Scene2 extends Phaser.Scene{
         //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
         platforms.create(400, 568, 'ground').setScale(2).refreshBody();
 
-        //making ledges
+        // Making static platforms for first level
         if(level == 1){
             platforms.create(600, 400, 'ground');
             platforms.create(600, 200, 'ground');
 
             platforms.create(50, 250, 'ground');
         }
+        // Making random platforms for the levels as they increase
         else{
             let coords = chooseLevel();
             for(let i=0;i<coords.length;i++){
@@ -53,7 +54,7 @@ class Scene2 extends Phaser.Scene{
         }
         
 
-        // The player and its settings
+        // Adding physics to the player.
         player = this.physics.add.sprite(100, 450, 'OurSprite');
 
         
@@ -63,8 +64,8 @@ class Scene2 extends Phaser.Scene{
         player.body.useDamping=true;
         player.setDrag(0.95,0);
 
-        //  Player physics properties. Give the little guy a slight bounce.
-        player.setBounce(0.2);
+        //  Giving character a bounce when it hits the ground.
+        player.setBounce(0.4);
         player.setCollideWorldBounds(true);
 
         //  Our player animations, turning, walking left and walking right.
@@ -77,7 +78,7 @@ class Scene2 extends Phaser.Scene{
             frameRate: 10,
             repeat: -1
         });
-/*
+/*      // Sprite that was chosen does not have a facing you frame, so it will turn from left to right instead of straight on.
         this.anims.create({
             key: 'turn',
             frames: [ { key: 'dude', frame: 4 } ],
@@ -96,17 +97,20 @@ class Scene2 extends Phaser.Scene{
         cursors = this.input.keyboard.createCursorKeys();
 
         //  Some stars to collect, 12 in total, evenly spaced 70 pixels apart along the x axis
+
+        
+
         stars = this.physics.add.group({
             key: 'star',
             repeat: 11,
-            setXY: { x: 12, y: 0, stepX: 70 }
+            setXY: { x: 12, y: 0, stepX: getRandomInt(50,70) }
         });
 
         stars.children.iterate(function (child) {
-            child.setGravityY(100);
+            child.setGravityY(95);
 
             //  Give each star a slightly different bounce
-            child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
+            child.setBounceY(Phaser.Math.FloatBetween(0.2, 0.8));
 
         });
 
@@ -145,6 +149,12 @@ class Scene2 extends Phaser.Scene{
 
 
     }
+
+    getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+      }
 
     update ()
     {

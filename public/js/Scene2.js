@@ -100,13 +100,13 @@ class Scene2 extends Phaser.Scene{
 
         
 
-        watermelon = this.physics.add.group({
+        watermelons = this.physics.add.group({
             key: 'watermelon',
             repeat: 11,
             setXY: { x: 12, y: 0, stepX: Phaser.Math.Between(50,75) }
         });
 
-        watermelon.children.iterate(function (child) {
+        watermelons.children.iterate(function (child) {
             child.setGravityY(95);
 
             //  Give each star a slightly different bounce
@@ -124,11 +124,11 @@ class Scene2 extends Phaser.Scene{
 
         //  Collide the player and the stars with the platforms
         this.physics.add.collider(player, platforms);
-        this.physics.add.collider(watermelon, platforms);
+        this.physics.add.collider(watermelons, platforms);
         this.physics.add.collider(bombs, platforms);
 
         //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
-        this.physics.add.overlap(player, watermelon, this.collectWatermelon, null, this);
+        this.physics.add.overlap(player, watermelons, this.collectWatermelon, null, this);
 
         this.physics.add.collider(player, bombs, this.hitBomb, null, this);
         console.log(this.scene);
@@ -208,7 +208,7 @@ class Scene2 extends Phaser.Scene{
         score += 10;
         scoreText.setText('Score: ' + score);
 
-        if (watermelon.countActive(true) === 0)
+        if (watermelons.countActive(true) === 0)
         {
             console.log('all watermelons collected');
             //console.log(platforms);

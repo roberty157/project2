@@ -43,7 +43,7 @@ class Scene3 extends Phaser.Scene {
     const exitButton = this.add.image(400,500,'exit')
     .setScale(2)
     .setInteractive()
-    .on('pointerdown', () =>  this.scene.start("bootGame"));
+    .on('pointerdown', () =>  document.location.replace('/game'));
 
 
     

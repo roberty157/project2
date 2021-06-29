@@ -7,7 +7,8 @@
 
 
     let player;
-    let watermelon;
+    //let watermelon;
+    let watermelons;
     let bombs;
     let platforms;
     let cursors;

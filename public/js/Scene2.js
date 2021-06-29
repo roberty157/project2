@@ -9,7 +9,7 @@ class Scene2 extends Phaser.Scene{
     {
         this.load.image('sky', './assets/sky.png');
         this.load.image('ground', './assets/platformDarkGray.png');
-        this.load.image('star', './assets/star.png');
+        this.load.image('watermelon', './assets/watermelon.png');
         this.load.image('bomb', './assets/bomb.png');
         this.load.spritesheet('OurSprite', './assets/OurSprite.png', { frameWidth: 100, frameHeight: 138 });
 
@@ -100,13 +100,13 @@ class Scene2 extends Phaser.Scene{
 
         
 
-        stars = this.physics.add.group({
-            key: 'star',
+        watermelon = this.physics.add.group({
+            key: 'watermelon',
             repeat: 11,
-            setXY: { x: 12, y: 0, stepX: Phaser.Math.Between(50,70) }
+            setXY: { x: 12, y: 0, stepX: Phaser.Math.Between(50,75) }
         });
 
-        stars.children.iterate(function (child) {
+        watermelon.children.iterate(function (child) {
             child.setGravityY(95);
 
             //  Give each star a slightly different bounce
@@ -124,11 +124,11 @@ class Scene2 extends Phaser.Scene{
 
         //  Collide the player and the stars with the platforms
         this.physics.add.collider(player, platforms);
-        this.physics.add.collider(stars, platforms);
+        this.physics.add.collider(watermelon, platforms);
         this.physics.add.collider(bombs, platforms);
 
         //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
-        this.physics.add.overlap(player, stars, this.collectStar, null, this);
+        this.physics.add.overlap(player, watermelon, this.collectWatermelon, null, this);
 
         this.physics.add.collider(player, bombs, this.hitBomb, null, this);
         console.log(this.scene);
@@ -191,7 +191,7 @@ class Scene2 extends Phaser.Scene{
         }
     }
 
-    collectStar (player, star)
+    collectWatermelon (player, watermelon)
     {
         /*
         for(let i = 0;i < 3;i++){
@@ -202,15 +202,15 @@ class Scene2 extends Phaser.Scene{
         console.log(platforms.children.entries[1]);
         platforms.children.entries[1].destroy();
         */
-        star.disableBody(true, true);
+        watermelon.disableBody(true, true);
 
         //  Add and update the score
         score += 10;
         scoreText.setText('Score: ' + score);
 
-        if (stars.countActive(true) === 0)
+        if (watermelon.countActive(true) === 0)
         {
-            console.log('all stars collected');
+            console.log('all watermelons collected');
             //console.log(platforms);
             //platform1.x = 200;
             //  A new batch of stars to collect

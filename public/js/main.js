@@ -7,7 +7,7 @@
 
 
     let player;
-    let stars;
+    let watermelon;
     let bombs;
     let platforms;
     let cursors;

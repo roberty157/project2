@@ -20,3 +20,4 @@ The game was created off of the phaser.js platform. We were able to utilize the 
 We created an interval method through phaser's library in order to randomize where the watermelons will drop. We also put the platforms and the backgrounds into an array in order to randomize which are used on each level.
 
 # Tutorial
+https://drive.google.com/file/d/1a199BmH3wKXer_xzDjytwGG495DCoFT_/view

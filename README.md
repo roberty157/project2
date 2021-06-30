@@ -12,3 +12,11 @@ node seed\
 npm start
 
 phaser runs on the client side
+
+
+# Game
+The game was created off of the phaser.js platform. We were able to utilize the physics that phaser had already created and added to the game. The next step was switching out the sprites for the character and for the stars to be switched out into watermelons.
+
+We created an interval method through phaser's library in order to randomize where the watermelons will drop. We also put the platforms and the backgrounds into an array in order to randomize which are used on each level.
+
+# Tutorial

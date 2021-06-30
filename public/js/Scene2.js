@@ -11,6 +11,7 @@ class Scene2 extends Phaser.Scene{
         this.load.image('ground', './assets/platformDarkGray.png');
         this.load.image('watermelon', './assets/watermelon.png');
         this.load.image('bomb', './assets/bomb.png');
+        //Dividing the sprite sheet into the correct pixels to get the correct frame size.
         this.load.spritesheet('OurSprite', './assets/OurSprite.png', { frameWidth: 100, frameHeight: 138 });
 
     // Creating 5 different background images
@@ -28,6 +29,7 @@ class Scene2 extends Phaser.Scene{
         
         // Adding array to randomize the backgrounds per level for the game.
         let bgLst = ['sky2','sky3','sky4','sky5'];
+            //randomly selecting background from the array to set for each level as it increases.
             const randomBGIndex = Math.floor(Math.random() * bgLst.length);
             this.add.image(400,300,bgLst[randomBGIndex]);
         
@@ -103,6 +105,7 @@ class Scene2 extends Phaser.Scene{
         watermelons = this.physics.add.group({
             key: 'watermelon',
             repeat: 11,
+            //making random interval that the watermelons will fall in between.
             setXY: { x: 12, y: 0, stepX: Phaser.Math.Between(50,75) }
         });
 
@@ -149,12 +152,12 @@ class Scene2 extends Phaser.Scene{
 
 
     }
-
+    //Setting interval for the watermelons to be separated by.
     getRandomInt(min, max) {
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
-      }
+    }
 
     update ()
     {

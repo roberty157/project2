@@ -106,7 +106,7 @@ class Scene2 extends Phaser.Scene{
             key: 'watermelon',
             repeat: 11,
             //making random interval that the watermelons will fall in between.
-            setXY: { x: 12, y: 0, stepX: Phaser.Math.Between(50,75) }
+            setXY: { x: 12, y: 0, stepX: Phaser.Math.Between(50,71) }
         });
 
         watermelons.children.iterate(function (child) {

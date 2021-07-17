@@ -4,7 +4,7 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 //const helpers = require('./utils/helpers');
-
+const compression = require('compression')
 //const boardPlugin = require('phaser3-rex-plugins');
 //const phaser = require('phaser');
 
@@ -30,6 +30,7 @@ const sess = {
 
 app.use(session(sess));
 
+app.use(compression());
 // Inform Express.js on which template engine to use
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
